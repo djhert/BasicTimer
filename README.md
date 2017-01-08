@@ -13,7 +13,7 @@ Create the BasicTimer Object:
 ```go
 timer := new(BasicTimer.Timer)
 ```
-Then you can use the new BasicTimer Object in your code to control the timer.
+Then you can use the new BasicTimer Object in your code to control the timer.  See an example of the application in BasicTimerTest.go
 ```
 Start() -- Sets the Timer object to "zero" and starts the timer thread.  This must be run first.
 You can run this to recycle your Timers as well.  
