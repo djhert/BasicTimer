@@ -2,6 +2,11 @@
 This is a basic timer that runs on another thread.  Used to see how long operations take in your Go Applications
 It's so basic, I did not include error checking.  
 
+## Installation:
+```sh
+$ go get github.com/markedhero/BasicTimer/
+```
+
 ## Usage: 
 
 Include the Header:
