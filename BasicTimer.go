@@ -14,8 +14,8 @@ func (t *Timer) Start() {
 	t.minute = 0
 	t.hour = 0
 	t.isPaused = false
-    t.isRunning = true
-    go func() {
+	t.isRunning = true
+	go func() {
 		for t.isRunning {
 			time.Sleep(time.Second)
 			if(!t.isPaused) {			 
