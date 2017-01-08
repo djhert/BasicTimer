@@ -9,21 +9,28 @@ type Timer struct {
 	isPaused bool
 	isRunning bool
 }
+
 func (t *Timer) Start() {	
 	t.second = 1
 	t.minute = 0
 	t.hour = 0
 	t.isPaused = false
 	t.isRunning = true
-	go func() {
-		for t.isRunning {
-			time.Sleep(time.Second)
-			if(!t.isPaused) {			 
-				t.addSecond()
-			}
-		}
-    }()    
+	go t.tick()
 }
+
+
+func (t *Timer) tick() {
+	for {
+		if !t.isRunning {
+			return
+		}
+		time.Sleep(time.Second)
+		if !t.isPaused {			 
+			t.addSecond()
+		}
+	}
+}   
 
 func (t *Timer) addSecond() {
 	t.second++
@@ -43,6 +50,7 @@ func (t *Timer) Pause(i bool) {
 
 func (t *Timer) Stop() {
 	t.isRunning = false
+	time.Sleep(time.Second)
 }
 
 func (t *Timer) Get() (int, int, int) {
@@ -50,5 +58,13 @@ func (t *Timer) Get() (int, int, int) {
 }
 
 func (t *Timer) Print() {
-	fmt.Printf("%d hour(s) %d minute(s) %d second(s)\n", t.hour,t.minute,t.second)
+	endString := ""
+	if t.hour > 0 {
+		endString = fmt.Sprintf("%s %d hour(s)", endString, t.hour)
+	}
+	if t.minute > 0 {
+		endString = fmt.Sprintf("%s %d minute(s)", endString, t.minute)
+	}
+	endString = fmt.Sprintf("%s %d second(s)", endString, t.second)
+	fmt.Printf("%s\n",endString)
 }

@@ -9,8 +9,8 @@ func main() {
 	basicTimer := new(BasicTimer.Timer)
 	//Start the timer
 	basicTimer.Start()
-	//Wait for 1 minute
-	time.Sleep(time.Second * 60)
+	//Wait for 55 seconds
+	time.Sleep(time.Second * 55)
 	//Print the current time accumulated
 	basicTimer.Print()
 	//Pause the timer
@@ -24,8 +24,15 @@ func main() {
 	//Wait another 10 seconds
 	time.Sleep(time.Second * 10)
 	//Show time is being accumulated after unpausing
-	basicTimer.Print()
+	basicTimer.Print()	
 	//End the timer
 	basicTimer.Stop()	
-	/* Once "Stop()" has been run, you can reset the timer by using Start() */
+	//Once "Stop()" has been run, you can reset the timer by using Start()
+	basicTimer.Start()
+	//Print to show that it has restarted
+	basicTimer.Print()
+	//Wait 10 seconds
+	time.Sleep(time.Second * 10)
+	//Show only 10 seconds have passed
+	basicTimer.Print()
 }
